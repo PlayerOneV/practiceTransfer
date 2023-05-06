@@ -7,17 +7,19 @@
           <v-icon icon="mdi-account"></v-icon>
         </v-avatar>
       </div>
-      <v-text-field label="username" class="mt-4" v-model="username"/>
-      <v-text-field label="password" />
-      <div class="flex flex-col">
-        <router-link to="" class="text-right mb-3 text-blue-600 visited:text-purple-600"
-          >¿Olvidaste tu constraseña?</router-link
-        >
-        <v-btn color="info" @click="submit(username)"> Login </v-btn>
-      </div>
+      <form @submit.prevent="userStore.login(username)">
+        <v-text-field label="username" class="mt-4" v-model="username" />
+        <v-text-field label="password" />
+        <div class="flex flex-col">
+          <router-link to="" class="text-right mb-3 text-blue-600 visited:text-purple-600"
+            >¿Olvidaste tu constraseña?</router-link
+          >
+          <v-btn color="info" type="submit"> Login </v-btn>
+        </div>
+      </form>
       <p class="text-center mt-3">
         ¿No tiene una cuenta?
-        <router-link to="" class="text-blue-600 visited:text-purple-600" >Registrate</router-link>
+        <router-link to="" class="text-blue-600 visited:text-purple-600">Registrate</router-link>
       </p>
     </div>
   </div>
@@ -25,14 +27,10 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
 import { useUserStore } from '@/stores/UserStore'
-import { ref } from 'vue';
+import { ref } from 'vue'
 
-const userStore = useUserStore();
-const username = ref('');
-
-const submit = (username: string) => {
-  userStore.login(username);
-};
+const userStore = useUserStore()
+const username = ref('')
 
 </script>
 <style scoped></style>
