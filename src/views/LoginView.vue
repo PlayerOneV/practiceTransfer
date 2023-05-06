@@ -1,18 +1,13 @@
 <template>
   <div>
-    <v-text-field
-      label="Main input"
-      hide-details="auto"
-    ></v-text-field>
+    <h1 class="text-3xl font-bold underline">Hello world!</h1>
+    <v-text-field label="Main input" hide-details="auto"></v-text-field>
     <v-text-field label="Another input"></v-text-field>
-    
   </div>
 </template>
 <script setup lang="ts">
-import { useUserStore } from '@/stores/UserStore';
+import { useUserStore } from '@/stores/UserStore'
 
-useUserStore();
+useUserStore()
 </script>
-<style scoped>
-  
-</style>
+<style scoped></style>
