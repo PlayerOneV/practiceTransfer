@@ -17,15 +17,11 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import {useMovieDetails} from '@/composables/useMovieDetails'
+import { Movie } from '@/types/movies'
 
-interface Movie {
-    id: number
-    title: string
-    overview: string
-    release_date: string
-}
 var dialog = ref(false)
 var movie = ref<Movie>()
+
 defineProps({
     movieId: {
         type: Number,
