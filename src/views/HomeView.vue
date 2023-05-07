@@ -5,5 +5,13 @@
 </template>
 
 <script setup lang="ts">
-import UserLayout from '@/layouts/UserLayout.vue';
+import UserLayout from '@/layouts/UserLayout.vue'
+import { useFetchMovies } from '@/composables/useFetchMovies'
+import { onMounted } from 'vue'
+
+onMounted(() => {
+  console.log( useFetchMovies());
+  
+})
+
 </script>
