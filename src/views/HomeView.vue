@@ -12,22 +12,8 @@
                   height="800px"
                   class="mt-5"
                 ></v-img>
-                <v-card-title>{{ movie.original_title }}</v-card-title>
-                <div class="text-center">
-                  <v-btn color="primary" @click="dialog = true"> Open Dialog </v-btn>
-
-                  <v-dialog v-model="dialog" width="auto">
-                    <v-card>
-                      <v-card-text>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua.
-                      </v-card-text>
-                      <v-card-actions>
-                        <v-btn color="primary" block @click="dialog = false">Close Dialog</v-btn>
-                      </v-card-actions>
-                    </v-card>
-                  </v-dialog>
-                </div>
+                <v-card-title class="text-center font-mono">{{ movie.title }}</v-card-title>
+                <DetailModal :movie-id="movie.id"/>
               </v-card>
             </v-col>
           </v-row>
@@ -41,10 +27,11 @@
 import UserLayout from '@/layouts/UserLayout.vue'
 import { useFetchMovies } from '@/composables/useFetchMovies'
 import { onMounted, ref } from 'vue'
+import DetailModal from '@/components/DetailModal.vue'
 
 interface Movie {
   id: number
-  original_title: string
+  title: string
   poster_path: string
 }
 var movies = ref<Movie[]>([])
