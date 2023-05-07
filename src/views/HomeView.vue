@@ -2,6 +2,13 @@
   <UserLayout>
     <v-card>
       <v-card-title>Catalogo de peliculas</v-card-title>
+      <v-combobox
+        label="Filtrar"
+        :items="items"
+        v-model="filter"
+        variant="outlined"
+        class="w-1/4 ml-16 mt-1"
+      ></v-combobox>
       <v-card-text>
         <v-container>
           <v-row>
@@ -18,11 +25,21 @@
 <script setup lang="ts">
 import UserLayout from '@/layouts/UserLayout.vue'
 import { useFetchMovies } from '@/composables/useFetchMovies'
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import { Movie } from '@/types/movies'
 import MovieCard from '@/components/MovieCard.vue'
 
 var movies = ref<Movie[]>([])
+const items = ['Nombre', 'Fecha', 'Favoritos']
+var filter = ref('')
+
+watch(filter, (value) => {
+  if (value === 'Nombre') {
+    movies.value.sort( (a, b) => a.title.localeCompare(b.title) )
+  } else if (value === 'Fecha') {
+    movies.value.sort( (a, b) => a.release_date.localeCompare(b.release_date) )
+  } 
+})
 
 onMounted(async () => {
   // Guardamos los resultados de la API
@@ -31,6 +48,5 @@ onMounted(async () => {
   for (let i = 0; i < 10; i++) {
     movies.value.push(results[i])
   }
-  console.log(movies.value)
 })
 </script>
