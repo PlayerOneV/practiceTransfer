@@ -1,8 +1,9 @@
-<script setup lang="ts">
-</script>
-
 <template>
-  <main>
-    <h1>Welcome</h1>
-  </main>
+  <UserLayout>
+    <h1>Home</h1>
+  </UserLayout>
 </template>
+
+<script setup lang="ts">
+import UserLayout from '@/layouts/UserLayout.vue';
+</script>
