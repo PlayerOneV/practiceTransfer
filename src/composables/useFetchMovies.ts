@@ -10,15 +10,11 @@ export const useFetchMovies = () => {
       const res = await axios.get(
         'https://api.themoviedb.org/3/movie/top_rated?api_key=21580cb65127517a2a38e70292a53ab3&language=en-US&page=1'
       )
-      data.value = res.data.results
-      console.log(res.data.results);
-      
+      return res.data.results      
     } catch (err) {
-      error.value = err
+      return err
     }
   }
-
-  fetch()
-
-  return data.value
+  
+  return fetch()
 }
