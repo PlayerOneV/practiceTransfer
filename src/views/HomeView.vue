@@ -5,7 +5,7 @@
       v-if="alert"
       closable
       title="Inicio de sesion exitoso"
-      text="Bienvenido a al catalogo de peliculas"
+      text="Bienvenido a nuestro catalogo de peliculas"
     ></v-alert>
     <v-card>
       <v-card-title>Catalogo de peliculas</v-card-title>
