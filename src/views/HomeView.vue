@@ -35,10 +35,10 @@ var filter = ref('')
 
 watch(filter, (value) => {
   if (value === 'Nombre') {
-    movies.value.sort( (a, b) => a.title.localeCompare(b.title) )
+    movies.value.sort((a, b) => a.title.localeCompare(b.title))
   } else if (value === 'Fecha') {
-    movies.value.sort( (a, b) => a.release_date.localeCompare(b.release_date) )
-  } 
+    movies.value.sort((a, b) => a.release_date.localeCompare(b.release_date))
+  }
 })
 
 onMounted(async () => {
