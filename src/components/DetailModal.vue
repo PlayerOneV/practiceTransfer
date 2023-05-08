@@ -1,7 +1,7 @@
 <template>
   <div class="text-center mb-4">
-    <v-btn color="info" @click="movieDetails(movieId)"> Detalles </v-btn>
-    <v-btn color="warning" icon="mdi-pencil-outline" @click="editMovie(movieId)" />
+    <v-btn color="info" class="mr-4" @click="movieDetails(movieId)"> Detalles </v-btn>
+    <v-btn color="warning" prepend-icon="mdi-pencil-outline" @click="editMovie(movieId)" > Edit</v-btn>
     <v-dialog v-model="infoModal" width="auto">
       <v-card
         :title="movie?.title"
