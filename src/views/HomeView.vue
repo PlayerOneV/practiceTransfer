@@ -13,6 +13,7 @@
         label="Filtrar"
         :items="items"
         v-model="filter"
+        clearable
         variant="outlined"
         class="w-1/4 ml-16 mt-1"
       ></v-combobox>
