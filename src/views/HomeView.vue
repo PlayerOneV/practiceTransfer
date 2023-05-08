@@ -30,7 +30,8 @@ import { Movie } from '@/types/movies'
 import MovieCard from '@/components/MovieCard.vue'
 
 var movies = ref<Movie[]>([])
-const items = ['Nombre', 'Fecha', 'Favoritos']
+var moviesDefault = ref<Movie[]>([])
+const items = ['Reset', 'Nombre', 'Fecha', 'Favoritos(Proximamente)']
 var filter = ref('')
 
 watch(filter, (value) => {
@@ -38,6 +39,8 @@ watch(filter, (value) => {
     movies.value.sort((a, b) => a.title.localeCompare(b.title))
   } else if (value === 'Fecha') {
     movies.value.sort((a, b) => a.release_date.localeCompare(b.release_date))
+  } else if (value === 'Reset') {
+    movies.value = [...moviesDefault.value]
   }
 })
 
@@ -48,5 +51,6 @@ onMounted(async () => {
   for (let i = 0; i < 10; i++) {
     movies.value.push(results[i])
   }
+  moviesDefault.value = [...movies.value]
 })
 </script>

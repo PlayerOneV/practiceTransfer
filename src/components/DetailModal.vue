@@ -2,6 +2,7 @@
   <div class="text-center mb-4">
     <v-btn color="info" class="mr-4" @click="movieDetails(movieId)"> Detalles </v-btn>
     <v-btn color="warning" prepend-icon="mdi-pencil-outline" @click="editMovie(movieId)" > Edit</v-btn>
+    <!-- Modal para visualizar informacion genereal de la pelicula -->
     <v-dialog v-model="infoModal" width="auto">
       <v-card
         :title="movie?.title"
@@ -16,7 +17,7 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-
+    <!-- Modal para editar informacion de la pelicula -->
     <v-dialog v-model="editModal" width="auto">
       <v-card
         :title="movie?.title"
