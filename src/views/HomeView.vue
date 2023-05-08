@@ -1,5 +1,12 @@
 <template>
   <UserLayout>
+    <v-alert
+      type="success"
+      v-if="alert"
+      closable
+      title="Inicio de sesion exitoso"
+      text="Bienvenido a al catalogo de peliculas"
+    ></v-alert>
     <v-card>
       <v-card-title>Catalogo de peliculas</v-card-title>
       <v-combobox
@@ -29,11 +36,22 @@ import { onMounted, ref, watch } from 'vue'
 import { Movie } from '@/types/movies'
 import MovieCard from '@/components/MovieCard.vue'
 
-var movies = ref<Movie[]>([])
-var moviesDefault = ref<Movie[]>([])
+const movies = ref<Movie[]>([])
+const moviesDefault = ref<Movie[]>([])
 const items = ['Reset', 'Nombre', 'Fecha', 'Favoritos(Proximamente)']
-var filter = ref('')
+const filter = ref('')
+const alert = ref(true)
 
+
+function toggleAlertInFiveSeconds() {
+  setTimeout(() => {
+    alert.value = false
+    console.log(alert.value);
+    
+  }, 3000)
+}
+
+// Mantenemos vigilado el filtro para ordenar las peliculas
 watch(filter, (value) => {
   if (value === 'Nombre') {
     movies.value.sort((a, b) => a.title.localeCompare(b.title))
@@ -52,5 +70,6 @@ onMounted(async () => {
     movies.value.push(results[i])
   }
   moviesDefault.value = [...movies.value]
+  toggleAlertInFiveSeconds()
 })
 </script>
